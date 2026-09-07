@@ -1,0 +1,16 @@
+{
+  "name": "courses-menu-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "install:all": "npm ci --prefix courses-menu && npm ci --prefix studio",
+    "dev:web": "npm --prefix courses-menu run dev",
+    "dev:studio": "npm --prefix studio run dev",
+    "build": "npm run build:web && npm run build:studio",
+    "build:web": "npm --prefix courses-menu run build",
+    "build:studio": "npm --prefix studio run build",
+    "lint": "npm run lint:web && npm run lint:studio",
+    "lint:web": "npm --prefix courses-menu run lint",
+    "lint:studio": "npm --prefix studio run lint"
+  }
+}
