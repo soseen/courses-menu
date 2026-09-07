@@ -4,6 +4,40 @@ The public Vite + React menu reads published menu documents from Sanity and rend
 categories and courses. Bootstrap provides the responsive layout and components, with the shared
 design-system palette applied through Sass.
 
+## Deploying future versions
+
+Cloudflare Pages watches the `main` branch. To publish a new code version:
+
+1. Make and review the changes locally.
+2. From the repository root, run `npm run lint:web` and `npm run build:web`.
+3. Commit the changes and push or merge them into `main`.
+
+Cloudflare then builds and publishes the new version automatically; there is no separate deploy
+command. Preview deployments for non-production branches are disabled.
+
+Changes to menus and courses in Sanity do not require a frontend deployment. Publish those changes
+in Sanity Studio and the deployed app will fetch the updated content at runtime.
+
+Production: <https://courses-menu.pages.dev>
+
+The Cloudflare Pages project uses these build settings:
+
+- Production branch: `main`
+- Root directory: `courses-menu`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Build system: version 3
+
+The production and preview environments define:
+
+```env
+VITE_SANITY_PROJECT_ID=am93ag8m
+VITE_SANITY_DATASET=production
+```
+
+The production origin is allowed in the Sanity project's CORS configuration. A token is not
+required because the app only reads published content.
+
 ## Local development
 
 Copy `.env.example` to `.env` and set the Sanity project values:
@@ -29,24 +63,3 @@ a Sanity token; the dataset must allow public reads.
 npm run lint
 npm run build
 ```
-
-## Cloudflare Pages
-
-Create a Pages project with the GitHub repository and these build settings:
-
-- Production branch: `main`
-- Root directory: `courses-menu`
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Build system: version 3
-
-Set the following production and preview environment variables in Pages:
-
-```env
-VITE_SANITY_PROJECT_ID=am93ag8m
-VITE_SANITY_DATASET=production
-```
-
-The production deployment is available at `https://courses-menu.pages.dev`. Add this exact origin
-to the Sanity project's CORS origins. A token is not required because the app only reads published
-content.
