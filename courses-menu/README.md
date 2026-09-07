@@ -47,5 +47,6 @@ VITE_SANITY_PROJECT_ID=am93ag8m
 VITE_SANITY_DATASET=production
 ```
 
-After the first deployment, add its exact `https://<project>.pages.dev` origin to the Sanity
-project's CORS origins. A token is not required because the app only reads published content.
+The production deployment is available at `https://courses-menu.pages.dev`. Add this exact origin
+to the Sanity project's CORS origins. A token is not required because the app only reads published
+content.
