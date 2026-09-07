@@ -97,6 +97,51 @@ export const MenuCount = styled.span`
   text-transform: uppercase;
 `
 
+export const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 18px;
+`
+
+export const QrCodeButton = styled.button`
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgb(255 255 255 / 38%);
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--menu-white);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transition: 150ms ease;
+
+  svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  &:hover {
+    border-color: var(--menu-primary);
+    background: var(--menu-primary);
+    color: var(--menu-ink);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--menu-white);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 520px) {
+    span {
+      display: none;
+    }
+  }
+`
+
 export const MenuTabs = styled.div`
   display: flex;
   align-items: stretch;
@@ -877,6 +922,88 @@ export const ModalCard = styled.div`
     color: var(--menu-dark);
     font-size: 13px;
     line-height: 1.5;
+  }
+`
+
+export const QrCodeModalCard = styled(ModalCard)`
+  width: min(720px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+`
+
+export const QrCodeWorkspace = styled.div`
+  display: grid;
+  grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(22px, 4vw, 38px);
+
+  @media (max-width: 620px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+export const QrCodePreview = styled.div`
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgb(47 53 46 / 16%);
+  padding: 12px;
+  background: #fff;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  span {
+    color: var(--menu-dark);
+    font-size: 12px;
+  }
+
+  @media (max-width: 620px) {
+    width: min(250px, 100%);
+    justify-self: center;
+  }
+`
+
+export const QrCodeDetails = styled.div`
+  display: grid;
+  align-content: start;
+  gap: 14px;
+
+  > p {
+    margin: 0;
+    color: var(--menu-dark);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  > button {
+    width: fit-content;
+  }
+
+  > a {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 5px;
+    color: var(--menu-action);
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
   }
 `
 

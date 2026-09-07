@@ -1,6 +1,9 @@
 export const MENU_API_VERSION = '2026-09-01'
 export const MAX_MENUS = 3
 export const SAVE_DELAY_MS = 700
+export const MENU_SETTINGS_ID = 'menuSettings'
+export const DEFAULT_PUBLIC_MENU_URL =
+  process.env.SANITY_STUDIO_MENU_URL || 'https://courses-menu.pages.dev/'
 
 export const MENU_QUERY = `*[_type == "menu"] | order(_createdAt asc) {
   _id,

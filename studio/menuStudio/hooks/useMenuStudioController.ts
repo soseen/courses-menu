@@ -25,6 +25,7 @@ export function useMenuStudioController() {
   const [selectedMenuId, setSelectedMenuId] = useState<string>()
   const [editor, setEditor] = useState<CourseEditorTarget | null>(null)
   const [isNewMenuDialogOpen, setNewMenuDialogOpen] = useState(false)
+  const [isQrCodeDialogOpen, setQrCodeDialogOpen] = useState(false)
 
   const selectedMenu = useMemo(
     () => menus.find((menu) => menu._id === selectedMenuId),
@@ -213,16 +214,19 @@ export function useMenuStudioController() {
 
   const closeCourseEditor = useCallback(() => setEditor(null), [])
   const closeNewMenuDialog = useCallback(() => setNewMenuDialogOpen(false), [])
+  const closeQrCodeDialog = useCallback(() => setQrCodeDialogOpen(false), [])
   const openCourseEditor = useCallback(
     (categoryKey: string, itemKey?: string) => setEditor({categoryKey, itemKey}),
     [],
   )
+  const openQrCodeDialog = useCallback(() => setQrCodeDialogOpen(true), [])
 
   return {
     addCategory,
     client,
     closeCourseEditor,
     closeNewMenuDialog,
+    closeQrCodeDialog,
     createMenu,
     dataset,
     deleteCourse,
@@ -232,12 +236,14 @@ export function useMenuStudioController() {
     editorItem,
     error,
     isNewMenuDialogOpen,
+    isQrCodeDialogOpen,
     loading,
     maxMenus: MAX_MENUS,
     menus,
     moveCategory,
     openCourseEditor,
     openNewMenuDialog,
+    openQrCodeDialog,
     projectId,
     publishSelectedMenu,
     publishState,

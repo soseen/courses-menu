@@ -9,6 +9,7 @@
     "build": "npm run build:web && npm run build:studio",
     "build:web": "npm --prefix courses-menu run build",
     "build:studio": "npm --prefix studio run build",
+    "generate:qr": "npm --prefix studio run generate:qr --",
     "verify:web": "npm run lint:web && npm run build:web",
     "deploy:web": "node scripts/deploy-web.mjs",
     "deploy:studio": "npm --prefix studio run deploy",

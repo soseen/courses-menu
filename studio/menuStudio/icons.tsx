@@ -158,3 +158,36 @@ export const ArrowDownIcon = (props: IconProps) => (
     />
   </Icon>
 )
+
+export const QrCodeIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path
+      d="M4 4h6v6H4V4Zm2 2v2h2V6H6Zm8-2h6v6h-6V4Zm2 2v2h2V6h-2ZM4 14h6v6H4v-6Zm2 2v2h2v-2H6Zm8-2h2v2h-2v-2Zm4 0h2v4h-2v-4Zm-4 4h2v2h-2v-2Zm4 2h2v-2h-2v2Z"
+      fill="currentColor"
+    />
+  </Icon>
+)
+
+export const DownloadIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path
+      d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.7"
+    />
+  </Icon>
+)
+
+export const ExternalLinkIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path
+      d="M13 5h6v6m0-6-8 8M10 7H5v12h12v-5"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.6"
+    />
+  </Icon>
+)

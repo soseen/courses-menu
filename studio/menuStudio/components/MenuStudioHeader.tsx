@@ -1,20 +1,23 @@
 import {useMenuStudio} from '../context/useMenuStudio'
-import {MenuIcon, PlusIcon} from '../icons'
+import {MenuIcon, PlusIcon, QrCodeIcon} from '../icons'
 import {
   AddMenuButton,
   Brand,
   BrandMark,
   BrandText,
   EyebrowRow,
+  HeaderActions,
   MenuCount,
   MenuTab,
   MenuTabs,
+  QrCodeButton,
   TopPanel,
   TopPanelInner,
 } from '../styles'
 
 export function MenuStudioHeader() {
-  const {maxMenus, menus, openNewMenuDialog, selectedMenuId, selectMenu} = useMenuStudio()
+  const {maxMenus, menus, openNewMenuDialog, openQrCodeDialog, selectedMenuId, selectMenu} =
+    useMenuStudio()
   const hasReachedMenuLimit = menus.length >= maxMenus
 
   return (
@@ -30,9 +33,15 @@ export function MenuStudioHeader() {
               <span>Courses menu studio</span>
             </BrandText>
           </Brand>
-          <MenuCount>
-            {menus.length} / {maxMenus} menus
-          </MenuCount>
+          <HeaderActions>
+            <QrCodeButton onClick={openQrCodeDialog} type="button">
+              <QrCodeIcon />
+              <span>QR code</span>
+            </QrCodeButton>
+            <MenuCount>
+              {menus.length} / {maxMenus} menus
+            </MenuCount>
+          </HeaderActions>
         </EyebrowRow>
 
         <MenuTabs aria-label="Available menus">

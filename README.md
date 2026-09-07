@@ -42,12 +42,28 @@ project ID, exposed as `VITE_SANITY_PROJECT_ID` in the frontend and
 CI reads the shared project ID from the `SANITY_PROJECT_ID` GitHub repository variable and the
 Studio app ID from `SANITY_DEPLOYMENT_APP_ID`.
 
+The Studio's QR-code tool defaults to `https://courses-menu.pages.dev/`. Set
+`SANITY_STUDIO_MENU_URL` to a different initial address if needed. Once an address is saved in the
+Studio, it is shared with other Studio users through the `menuSettings` singleton.
+
 ## Checks
 
 ```sh
 npm run lint
 npm run build
 ```
+
+## Menu QR code
+
+The current print-ready QR image lives in `assets/courses-menu-qr-code.png`. It can be regenerated
+for the current domain with `npm run generate:qr`, or for a replacement domain with:
+
+```sh
+npm run generate:qr -- https://new-domain.example/menu/
+```
+
+Studio users can also open **QR code** in the menu tool, update and save the public URL, check the
+destination, and download the generated 1024 × 1024 PNG.
 
 ## Deployment
 
