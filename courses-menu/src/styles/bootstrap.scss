@@ -6,6 +6,11 @@ $white: $menu-white;
 $body-bg: $menu-background;
 $body-color: $menu-ink;
 $body-secondary-color: $menu-action;
+$font-family-sans-serif: system-ui, 'Segoe UI', Roboto, sans-serif;
+$headings-font-family: Georgia, 'Times New Roman', serif;
+$headings-font-weight: 400;
+$display-font-family: $headings-font-family;
+$display-font-weight: 400;
 
 // `primary` is Bootstrap's interactive role. The brand's very light primary
 // remains available as `light`, while the derived action color gives buttons
@@ -14,6 +19,11 @@ $primary: $menu-action;
 $secondary: $menu-secondary;
 $light: $menu-primary;
 $dark: $menu-dark;
+$warning: #c89a2b;
+
+$card-bg: mix($menu-primary, $menu-white, 80%);
+$card-border-color: rgba($menu-dark, 0.2);
+$card-border-radius: 0;
 
 $link-color: $menu-action;
 $link-hover-color: shade-color($menu-action, 20%);

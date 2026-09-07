@@ -2,7 +2,7 @@ export const MENU_API_VERSION = '2026-09-01'
 export const MAX_MENUS = 3
 export const SAVE_DELAY_MS = 700
 
-export const MENU_QUERY = `*[_type == "menu" && !(_id in path("drafts.**"))] | order(_createdAt asc) {
+export const MENU_QUERY = `*[_type == "menu"] | order(_createdAt asc) {
   _id,
   _type,
   _rev,
@@ -22,6 +22,7 @@ export const MENU_QUERY = `*[_type == "menu" && !(_id in path("drafts.**"))] | o
       description,
       price,
       image,
+      visible,
       available
     }
   }

@@ -1,0 +1,14 @@
+.title {
+  max-width: 56rem;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.introduction {
+  max-width: 37rem;
+  line-height: 1.7;
+}
+
+.state {
+  max-width: 45rem;
+}

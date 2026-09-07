@@ -36,6 +36,22 @@ export const menuItem = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+          validation: (rule) => rule.required().warning('Describe the dish for accessibility.'),
+        }),
+      ],
+    }),
+
+    defineField({
+      name: 'visible',
+      title: 'Visible on menu',
+      description: 'Turn this off to hide the course from the public menu.',
+      type: 'boolean',
+      initialValue: true,
     }),
 
     defineField({

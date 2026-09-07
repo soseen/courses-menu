@@ -30,9 +30,9 @@ export function getImageUrl(
 export function getSaveStatusLabel(saveState: SaveState) {
   switch (saveState) {
     case 'saving':
-      return 'Saving changes…'
+      return 'Saving draft…'
     case 'saved':
-      return 'All changes saved'
+      return 'Draft saved'
     case 'error':
       return 'Save failed'
     default:

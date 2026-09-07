@@ -33,6 +33,7 @@ function createCourseDraft(item?: MenuItem): MenuItem {
       _type: 'menuItem',
       name: '',
       description: '',
+      visible: true,
       available: true,
     }
   )
@@ -180,15 +181,32 @@ function CourseEditorForm({category, item}: CourseEditorFormProps) {
               </div>
             </ImageDrop>
             {draft.image && (
-              <ImageActions>
-                <TextButton
-                  $danger
-                  onClick={() => setDraft((current) => ({...current, image: undefined}))}
-                  type="button"
-                >
-                  Remove image
-                </TextButton>
-              </ImageActions>
+              <>
+                <Field style={{marginTop: 12}}>
+                  Image description
+                  <input
+                    onChange={(event) =>
+                      setDraft((current) =>
+                        current.image
+                          ? {...current, image: {...current.image, alt: event.target.value}}
+                          : current,
+                      )
+                    }
+                    placeholder="e.g. Roasted carrots with herb dressing"
+                    type="text"
+                    value={draft.image.alt ?? ''}
+                  />
+                </Field>
+                <ImageActions>
+                  <TextButton
+                    $danger
+                    onClick={() => setDraft((current) => ({...current, image: undefined}))}
+                    type="button"
+                  >
+                    Remove image
+                  </TextButton>
+                </ImageActions>
+              </>
             )}
           </Field>
         </FieldStack>

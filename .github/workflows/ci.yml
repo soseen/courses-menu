@@ -13,6 +13,8 @@ jobs:
   web:
     name: Web
     runs-on: ubuntu-latest
+    env:
+      VITE_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
     defaults:
       run:
         working-directory: courses-menu
@@ -35,6 +37,9 @@ jobs:
   studio:
     name: Studio
     runs-on: ubuntu-latest
+    env:
+      SANITY_STUDIO_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+      SANITY_DEPLOYMENT_APP_ID: ${{ vars.SANITY_DEPLOYMENT_APP_ID }}
     defaults:
       run:
         working-directory: studio

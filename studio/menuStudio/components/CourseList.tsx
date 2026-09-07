@@ -17,7 +17,7 @@ import {
 } from '@dnd-kit/sortable'
 import {CSS} from '@dnd-kit/utilities'
 import {useMenuStudio} from '../context/useMenuStudio'
-import {DragIcon, EditIcon, ImageIcon} from '../icons'
+import {DragIcon, EditIcon, EyeIcon, EyeOffIcon, ImageIcon} from '../icons'
 import {
   AvailabilityDot,
   CourseList as CourseListContainer,
@@ -39,14 +39,15 @@ type CourseListProps = {
 
 type SortableCourseProps = {
   children: (handle: ReactNode) => ReactNode
+  hidden: boolean
   id: string
   label: string
 }
 
-function SortableCourse({children, id, label}: SortableCourseProps) {
+function SortableCourse({children, hidden, id, label}: SortableCourseProps) {
   const {attributes, isDragging, listeners, setNodeRef, transform, transition} = useSortable({id})
   const style: CSSProperties = {
-    opacity: isDragging ? 0.55 : 1,
+    opacity: isDragging ? 0.55 : hidden ? 0.58 : 1,
     position: 'relative',
     transform: CSS.Transform.toString(transform),
     transition,
@@ -73,7 +74,8 @@ function SortableCourse({children, id, label}: SortableCourseProps) {
 }
 
 export function CourseList({categoryKey, items}: CourseListProps) {
-  const {dataset, openCourseEditor, projectId, reorderCourses} = useMenuStudio()
+  const {dataset, openCourseEditor, projectId, reorderCourses, toggleCourseVisibility} =
+    useMenuStudio()
   const sensors = useSensors(
     useSensor(PointerSensor, {activationConstraint: {distance: 5}}),
     useSensor(TouchSensor, {activationConstraint: {delay: 150, tolerance: 6}}),
@@ -109,7 +111,12 @@ export function CourseList({categoryKey, items}: CourseListProps) {
             })
 
             return (
-              <SortableCourse id={item._key} key={item._key} label={item.name ?? 'course'}>
+              <SortableCourse
+                hidden={item.visible === false}
+                id={item._key}
+                key={item._key}
+                label={item.name ?? 'course'}
+              >
                 {(dragHandle) => (
                   <>
                     {dragHandle}
@@ -132,6 +139,15 @@ export function CourseList({categoryKey, items}: CourseListProps) {
                       $available={item.available !== false}
                       title={item.available === false ? 'Unavailable' : 'Available'}
                     />
+                    <IconButton
+                      aria-label={`${item.visible === false ? 'Show' : 'Hide'} ${item.name ?? 'course'} on the public menu`}
+                      aria-pressed={item.visible !== false}
+                      onClick={() => toggleCourseVisibility(categoryKey, item._key)}
+                      title={item.visible === false ? 'Show on public menu' : 'Hide from public menu'}
+                      type="button"
+                    >
+                      {item.visible === false ? <EyeOffIcon /> : <EyeIcon />}
+                    </IconButton>
                     <IconButton
                       aria-label={`Edit ${item.name ?? 'course'}`}
                       onClick={() => openCourseEditor(categoryKey, item._key)}

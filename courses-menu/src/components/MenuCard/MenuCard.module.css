@@ -1,0 +1,16 @@
+.card {
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 1rem 2.5rem rgb(47 53 46 / 10%) !important;
+  transform: translateY(-0.2rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

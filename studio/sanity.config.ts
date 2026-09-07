@@ -4,11 +4,13 @@ import {menuStudioTheme} from './theme'
 import {MenuStudio} from './menuStudio/MenuStudio'
 import {MenuIcon} from './menuStudio/icons'
 
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'am93ag8m'
+
 export default defineConfig({
   name: 'default',
   title: 'Courses Menu',
 
-  projectId: 'am93ag8m',
+  projectId,
   dataset: 'production',
 
   theme: menuStudioTheme,

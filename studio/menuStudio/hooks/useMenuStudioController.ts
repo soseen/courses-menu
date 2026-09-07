@@ -17,6 +17,8 @@ export function useMenuStudioController() {
     flushPendingSave,
     loading,
     menus,
+    publishMenu,
+    publishState,
     saveState,
     updateMenu,
   } = useMenuRepository(client)
@@ -128,6 +130,18 @@ export function useMenuStudioController() {
     [updateCategory],
   )
 
+  const toggleCourseVisibility = useCallback(
+    (categoryKey: string, itemKey: string) => {
+      updateCategory(categoryKey, (category) => ({
+        ...category,
+        items: (category.items ?? []).map((item) =>
+          item._key === itemKey ? {...item, visible: item.visible === false} : item,
+        ),
+      }))
+    },
+    [updateCategory],
+  )
+
   const createMenu = useCallback(
     async (name: string) => {
       const title = name.trim()
@@ -156,6 +170,11 @@ export function useMenuStudioController() {
       setEditor(null)
     }
   }, [deleteMenuDocument, menus, selectedMenu])
+
+  const publishSelectedMenu = useCallback(async () => {
+    if (!selectedMenu) return false
+    return publishMenu(selectedMenu._id)
+  }, [publishMenu, selectedMenu])
 
   const saveCourse = useCallback(
     (item: MenuItem) => {
@@ -220,6 +239,8 @@ export function useMenuStudioController() {
     openCourseEditor,
     openNewMenuDialog,
     projectId,
+    publishSelectedMenu,
+    publishState,
     removeCategory,
     reorderCourses,
     saveCourse,
@@ -227,6 +248,7 @@ export function useMenuStudioController() {
     selectedMenu,
     selectedMenuId,
     selectMenu,
+    toggleCourseVisibility,
     updateCategory,
     updateSelectedMenu,
   }

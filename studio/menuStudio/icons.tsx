@@ -88,6 +88,30 @@ export const ImageIcon = (props: IconProps) => (
   </Icon>
 )
 
+export const EyeIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path
+      d="M2.8 12s3.3-5.5 9.2-5.5 9.2 5.5 9.2 5.5-3.3 5.5-9.2 5.5S2.8 12 2.8 12Z"
+      stroke="currentColor"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+    />
+    <circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.5" />
+  </Icon>
+)
+
+export const EyeOffIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path
+      d="M4 4 20 20M9.7 6.8c.7-.2 1.5-.3 2.3-.3 5.9 0 9.2 5.5 9.2 5.5a14.7 14.7 0 0 1-2.7 3.3M14.4 17.2c-.7.2-1.5.3-2.4.3-5.9 0-9.2-5.5-9.2-5.5a14.8 14.8 0 0 1 2.8-3.4M9.9 9.9a3 3 0 0 0 4.2 4.2"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+    />
+  </Icon>
+)
+
 export const ArrowIcon = (props: IconProps) => (
   <Icon {...props}>
     <path

@@ -4,6 +4,7 @@ export type SanityImage = {
     _type: 'reference'
     _ref: string
   }
+  alt?: string
 }
 
 export type MenuItem = {
@@ -13,6 +14,7 @@ export type MenuItem = {
   description?: string
   price?: number
   image?: SanityImage
+  visible?: boolean
   available?: boolean
 }
 
@@ -33,6 +35,7 @@ export type MenuDocument = {
   _updatedAt?: string
   title: string
   categories?: MenuCategory[]
+  hasUnpublishedChanges: boolean
 }
 
 export type CourseEditorTarget = {
@@ -41,3 +44,4 @@ export type CourseEditorTarget = {
 }
 
 export type SaveState = 'idle' | 'saving' | 'saved' | 'error'
+export type PublishState = 'idle' | 'publishing' | 'published' | 'error'

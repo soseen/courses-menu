@@ -570,7 +570,7 @@ export const CourseList = styled.div`
 
 export const CourseRow = styled.div`
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto auto;
   align-items: center;
   gap: 8px;
   width: 100%;

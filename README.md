@@ -34,6 +34,14 @@ npm run dev:web
 npm run dev:studio
 ```
 
+Copy each app's `.env.example` to `.env` before starting it. Both apps require the same Sanity
+project ID, exposed as `VITE_SANITY_PROJECT_ID` in the frontend and
+`SANITY_STUDIO_PROJECT_ID` in Studio. Studio additionally requires
+`SANITY_DEPLOYMENT_APP_ID` for its hosted deployment configuration.
+
+CI reads the shared project ID from the `SANITY_PROJECT_ID` GitHub repository variable and the
+Studio app ID from `SANITY_DEPLOYMENT_APP_ID`.
+
 ## Checks
 
 ```sh

@@ -22,6 +22,8 @@ export function MenuWorkspace() {
     error,
     loading,
     openNewMenuDialog,
+    publishSelectedMenu,
+    publishState,
     saveState,
     selectedMenu,
     updateSelectedMenu,
@@ -59,6 +61,21 @@ export function MenuWorkspace() {
             </TitleBlock>
             <HeadingActions>
               <SaveStatus $state={saveState}>{getSaveStatusLabel(saveState)}</SaveStatus>
+              <PrimaryButton
+                disabled={
+                  !selectedMenu.hasUnpublishedChanges ||
+                  publishState === 'publishing' ||
+                  saveState === 'error'
+                }
+                onClick={() => void publishSelectedMenu()}
+                type="button"
+              >
+                {publishState === 'publishing'
+                  ? 'Publishing…'
+                  : selectedMenu.hasUnpublishedChanges
+                    ? 'Publish'
+                    : 'Published'}
+              </PrimaryButton>
               <TextButton $danger onClick={() => void deleteSelectedMenu()} type="button">
                 Remove menu
               </TextButton>
