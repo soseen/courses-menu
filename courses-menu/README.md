@@ -29,3 +29,23 @@ a Sanity token; the dataset must allow public reads.
 npm run lint
 npm run build
 ```
+
+## Cloudflare Pages
+
+Create a Pages project with the GitHub repository and these build settings:
+
+- Production branch: `main`
+- Root directory: `courses-menu`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Build system: version 3
+
+Set the following production and preview environment variables in Pages:
+
+```env
+VITE_SANITY_PROJECT_ID=am93ag8m
+VITE_SANITY_DATASET=production
+```
+
+After the first deployment, add its exact `https://<project>.pages.dev` origin to the Sanity
+project's CORS origins. A token is not required because the app only reads published content.
