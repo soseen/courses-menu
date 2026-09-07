@@ -1,9 +1,11 @@
-import { defineField, defineType } from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
+import {MenuIcon} from '../menuStudio/icons'
 
 export const category = defineType({
   name: 'category',
   title: 'Category',
   type: 'object',
+  icon: MenuIcon,
 
   fields: [
     defineField({
@@ -29,13 +31,9 @@ export const category = defineType({
 
     defineField({
       name: 'items',
-      title: 'Items',
+      title: 'Courses',
       type: 'array',
-      of: [
-        {
-          type: 'menuItem',
-        },
-      ],
+      of: [defineArrayMember({type: 'menuItem'})],
     }),
   ],
 
@@ -48,7 +46,7 @@ export const category = defineType({
     prepare({ title, items }) {
       return {
         title,
-        subtitle: `${items?.length ?? 0} items`,
+        subtitle: `${items?.length ?? 0} courses`,
       }
     },
   },

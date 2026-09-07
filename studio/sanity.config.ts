@@ -1,7 +1,8 @@
 import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import {menuStudioTheme} from './theme'
+import {MenuStudio} from './menuStudio/MenuStudio'
+import {MenuIcon} from './menuStudio/icons'
 
 export default defineConfig({
   name: 'default',
@@ -10,7 +11,16 @@ export default defineConfig({
   projectId: 'am93ag8m',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  theme: menuStudioTheme,
+
+  tools: [
+    {
+      name: 'menus',
+      title: 'Menus',
+      icon: MenuIcon,
+      component: MenuStudio,
+    },
+  ],
 
   schema: {
     types: schemaTypes,

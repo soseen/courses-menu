@@ -1,0 +1,35 @@
+// Bootstrap's Sass variables are mapped to our shared design tokens here.
+// The token values are injected by vite.config.ts from design-system/palette.ts.
+@import 'bootstrap/scss/functions';
+
+$white: $menu-white;
+$body-bg: $menu-background;
+$body-color: $menu-ink;
+$body-secondary-color: $menu-action;
+
+// `primary` is Bootstrap's interactive role. The brand's very light primary
+// remains available as `light`, while the derived action color gives buttons
+// and links the contrast expected of interactive controls.
+$primary: $menu-action;
+$secondary: $menu-secondary;
+$light: $menu-primary;
+$dark: $menu-dark;
+
+$link-color: $menu-action;
+$link-hover-color: shade-color($menu-action, 20%);
+$border-color: rgba($menu-dark, 0.32);
+$focus-ring-color: rgba($menu-action, 0.35);
+$component-active-bg: $menu-action;
+$component-active-color: $menu-white;
+$enable-dark-mode: false;
+
+@import 'bootstrap/scss/bootstrap';
+
+:root {
+  --menu-color-background: #{$menu-background};
+  --menu-color-primary: #{$menu-primary};
+  --menu-color-secondary: #{$menu-secondary};
+  --menu-color-dark: #{$menu-dark};
+  --menu-color-ink: #{$menu-ink};
+  --menu-color-action: #{$menu-action};
+}

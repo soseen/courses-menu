@@ -1,9 +1,11 @@
-import { defineField, defineType } from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
+import {MenuIcon} from '../menuStudio/icons'
 
 export const menu = defineType({
   name: 'menu',
   title: 'Menu',
   type: 'document',
+  icon: MenuIcon,
 
   fields: [
     defineField({
@@ -17,11 +19,7 @@ export const menu = defineType({
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [
-        {
-          type: 'category',
-        },
-      ],
+      of: [defineArrayMember({type: 'category'})],
     }),
   ],
 })

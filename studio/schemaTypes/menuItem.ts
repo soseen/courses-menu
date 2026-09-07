@@ -1,14 +1,16 @@
-import { defineField, defineType } from 'sanity'
+import {defineField, defineType} from 'sanity'
+import {ImageIcon} from '../menuStudio/icons'
 
 export const menuItem = defineType({
   name: 'menuItem',
-  title: 'Menu Item',
+  title: 'Course',
   type: 'object',
+  icon: ImageIcon,
 
   fields: [
     defineField({
       name: 'name',
-      title: 'Name',
+      title: 'Course title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -22,7 +24,7 @@ export const menuItem = defineType({
 
     defineField({
       name: 'price',
-      title: 'Price',
+      title: 'Price (GBP)',
       type: 'number',
       validation: (rule) => rule.required().min(0),
     }),
@@ -56,7 +58,7 @@ export const menuItem = defineType({
         title,
         subtitle:
           typeof price === 'number'
-            ? `${price.toFixed(2)} zł`
+            ? `£${price.toFixed(2)}`
             : undefined,
         media,
       }

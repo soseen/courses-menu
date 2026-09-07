@@ -8,11 +8,16 @@ A small monorepo containing the customer-facing courses menu and the Sanity Stud
 .
 |-- courses-menu/  # Vite + React frontend
 |-- studio/        # Sanity Studio and content schemas
+|-- design-system/ # Shared color tokens used by both apps
 |-- .github/       # Continuous-integration checks
 `-- package.json   # Convenience commands for both apps
 ```
 
 The two apps keep separate dependencies and lockfiles. They live in one repository because frontend work and content-model changes belong to the same product and often need to be reviewed together. They can still be developed and deployed independently.
+
+The public app compiles a palette-customized Bootstrap build from Sass. Sanity Studio uses the
+same palette through Sanity's native theme API; Bootstrap is not loaded into Studio. See
+`design-system/README.md` for the token mappings and accessibility notes.
 
 ## Local development
 
