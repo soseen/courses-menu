@@ -9,11 +9,13 @@ design-system palette applied through Sass.
 Cloudflare Pages watches the `main` branch. To publish a new code version:
 
 1. Make and review the changes locally.
-2. From the repository root, run `npm run lint:web` and `npm run build:web`.
-3. Commit the changes and push or merge them into `main`.
+2. Commit the changes on `main`.
+3. From the repository root, run `npm run deploy:web`.
 
-Cloudflare then builds and publishes the new version automatically; there is no separate deploy
-command. Preview deployments for non-production branches are disabled.
+The deployment command requires a clean `main` branch, runs the frontend lint and production build,
+and pushes `main` to GitHub. Cloudflare then builds and publishes the pushed commit automatically.
+It does not create a commit for you. A normal `git push origin main` also remains valid. Preview
+deployments for non-production branches are disabled.
 
 Changes to menus and courses in Sanity do not require a frontend deployment. Publish those changes
 in Sanity Studio and the deployed app will fetch the updated content at runtime.

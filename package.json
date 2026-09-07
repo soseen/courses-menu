@@ -9,6 +9,8 @@
     "build": "npm run build:web && npm run build:studio",
     "build:web": "npm --prefix courses-menu run build",
     "build:studio": "npm --prefix studio run build",
+    "verify:web": "npm run lint:web && npm run build:web",
+    "deploy:web": "node scripts/deploy-web.mjs",
     "deploy:studio": "npm --prefix studio run deploy",
     "lint": "npm run lint:web && npm run lint:studio",
     "lint:web": "npm --prefix courses-menu run lint",
